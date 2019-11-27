@@ -1,0 +1,93 @@
+/*初始化代码*/
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+a,
+p,
+i,
+em,
+strong,
+img,
+input,
+li,
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: #999;
+}
+
+li {
+	list-style: none;
+}
+
+input {
+	border: 0 none;
+	outline: none;
+}
+
+img {
+	border: 0 none;
+	vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-weight: normal;
+}
+
+i,
+em {
+	font-style: normal;
+}
+
+body {
+	font: 12px/100% "微软雅黑";
+	background-color: #f6f6f6;
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	clear: both;
+	height: 0px;
+	visibility: hidden;
+}
+
+.clearfix {
+	*zoom:1;
+}
+
+/* element */
+.el-table .cell {
+	overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 0px 20px;
+}
+
+.filter {
+	margin-bottom: 10px;
+}
+.filter>.el-select {
+	margin-right: 10px;
+	width: 200px;
+}
+.filter>.el-input {
+	margin-right: 10px;
+	width: 200px;
+}
+.el-pagination {
+	margin-top: 10px;
+	text-align: right;
+}
