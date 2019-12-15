@@ -12,9 +12,9 @@
                     <el-input v-model="username" placeholder="输入用户名"/>
                     <el-input type='password' v-model="password" @blur="passwordBlur" placeholder="输入密码"/>
                     <el-input type='password' v-show="isRegister" @blur="repasswordBlur" v-model="repassword" placeholder="再次输入密码"/>
+                    <el-button type='primary' @click="doSomeThing">{{!isRegister?'登录': '注册'}}</el-button>
                     <p>
-                        <el-button type='primary' @click="doSomeThing">{{!isRegister?'登录': '注册'}}</el-button>
-                        &nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp; <span @click="doRegister">{{isRegister?'点击登录': '点击注册'}}</span>
+                        <span @click="doRegister">{{isRegister?'点击登录': '点击注册'}}</span>
                     </p>
                 </div>
             </div>
@@ -213,21 +213,37 @@ export default {
                     padding: 50px 0;
                     .el-input {
                         display: block;
-                        width: 360px;
+                        width: 70%;
                         margin: 20px auto;
+                        /deep/ .el-input__inner {
+                            height: 50px;
+                            line-height: 50px;
+                            font-size: 16px;
+                            background-color: transparent;
+                            color: #fff;
+                        }
+                    }
+                    .el-button {
+                        width: 70%;
+                        height: 50px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin-left: 15%;
+                        background-color: transparent;
                     }
                     >p {
-                        width: 100%;
-                        padding-left: 70px;
-                        text-align: left;
+                        width: 85%;
+                        height: 50px;
+                        line-height: 50px;
+                        text-align: right;
                         color: #fff;
-                        .el-button {
-                            width: 100px;
-                        }
+                        padding-right: 15%;
                         span {
+                            display: inline-block;
                             color: #409eff;
                             font-size: 16px;
                             cursor: pointer;
+                            text-decoration: underline;
                         }
                     }
                     &::after {

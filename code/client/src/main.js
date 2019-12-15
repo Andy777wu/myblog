@@ -29,6 +29,9 @@ import {
   FormItem
 } from 'element-ui'
 
+import VueAnime from 'vue-animejs';
+Vue.use(VueAnime)
+
 Vue.use(Tree)
 Vue.use(Table)
 Vue.use(TableColumn)
