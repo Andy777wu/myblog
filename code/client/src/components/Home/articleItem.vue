@@ -2,7 +2,7 @@
     <div class="articleItem" @click="toDetail">
         <div>
             <span class="title">{{title}}</span>
-            <span><i class="blog-iconicon-time"></i>{{createdAt}}</span>
+            <span><i class="blog-iconicon-time"></i>{{createdAt | stampToDate}}</span>
         </div>
         <p>{{summarize}}</p>
         <div>
@@ -42,6 +42,7 @@ export default {
             span.title {
                 font-size: 16px;
                 font-weight: 600;
+                line-height: 24px;
             }
             span {
                 font-size: 12px;
@@ -77,7 +78,16 @@ export default {
     .articleItem:hover {
         // transform: scale(1,1.1);
         border-radius: 10px;
-        box-shadow: 0 0 20px 5px #000;
+        box-shadow: 0 0 10px 2px #1d5da1;
         z-index: 999;
+    }
+    @media (max-width: 700px) {
+        .articleItem {
+            >div:first-child {
+                span.title {
+                    font-size: 14px;
+                }
+            }
+        }
     }
 </style>

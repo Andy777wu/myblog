@@ -42,11 +42,14 @@ const ArticleControl = {
                     message:err.message
                 });
             }else{
+                let pageSize = Number(req.query.checkMoreNewIndex)*4
+                let dataList = paging(1,pageSize,data.reverse())
                 //3.响应修改成功
                 res.json({
                     code:200,
                     message:'success',
-                    data: data.reverse().slice(0,4),
+                    data: dataList,
+                    articleTotal: data.length
                 });
             }
         })
@@ -64,7 +67,7 @@ const ArticleControl = {
                 res.json({
                     code:200,
                     message:'success',
-                    data: data.filter(d=>d.readNum>100),
+                    data: data.filter(d=>d.readNum>100)
                 });
             }
         })
@@ -100,13 +103,13 @@ const ArticleControl = {
     getArticleDetail: function(req,res){
         ArticleModel.findById(req.query,(err,data)=>{
             if(err){
-                //3.响应修改失败
+                //3.响应失败
                 res.json({
                     code:500,
                     message:err.message
                 });
             }else{
-                //3.响应修改成功
+                //3.响应成功
                 res.json({
                     code:200,
                     message:'success',
@@ -154,6 +157,42 @@ const ArticleControl = {
         console.log(req.query);
         
         ArticleModel.deleteOne(req.query,(err)=>{
+            if(err){
+                //3.响应修改失败
+                res.json({
+                    code:500,
+                    message:err.message
+                });
+            }else{
+                //3.响应修改成功
+                res.json({
+                    code:200,
+                    message:'success'
+                });
+            }
+        })
+    },
+    updateReadNum: function(req,res){
+        const {readNum, _id} = req.body
+        ArticleModel.updateOne({_id},{$set : { readNum }},(err,data)=>{
+            if(err){
+                //3.响应修改失败
+                res.json({
+                    code:500,
+                    message:err.message
+                });
+            }else{
+                //3.响应修改成功
+                res.json({
+                    code:200,
+                    message:'success'
+                });
+            }
+        })
+    },
+    updateCommentNum: function(req, res){
+        const {commentNum, _id} = req.body
+        ArticleModel.updateOne({_id},{$set : { commentNum }},(err,data)=>{
             if(err){
                 //3.响应修改失败
                 res.json({

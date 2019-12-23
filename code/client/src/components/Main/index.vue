@@ -22,4 +22,10 @@ export default {
         margin-top: 60px;
         padding: 20px 200px;
     }
+    @media (max-width: 700px) {
+        .content {
+            margin-top: 40px;
+            padding: 20px 0;
+        }
+    }
 </style>

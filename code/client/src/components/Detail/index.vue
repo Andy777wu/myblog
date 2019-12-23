@@ -131,4 +131,18 @@ export default {
             width: calc(100% - 360px);
         }
     }
+    
+    @media (max-width: 1200px) {
+        .detail{
+            width: 100%;
+            height: 100%;
+            aside {
+                display: none;
+            }
+            >div {
+                width: calc(100% - 20px);
+            }
+            
+        }
+    }
 </style>

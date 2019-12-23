@@ -36,6 +36,7 @@ export default {
         transition: all .5s;
         >p {
             font-size: 16px;
+            line-height: 24px;
             i {
                 color: #f56f56;
             }
@@ -58,6 +59,6 @@ export default {
     .serierItem:hover {
         transform: scale(1.1);
         border-radius: 10px;
-        box-shadow: 0 0 20px 5px #000;
+        box-shadow: 0 0 10px 2px #1d5da1;
     }
 </style>

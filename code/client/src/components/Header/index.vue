@@ -4,7 +4,7 @@
         <div>
           <i class="blog-iconuser"></i>&nbsp;
           <span style="margin-right: 5px" @click="login">{{isLogin?'注销': '登录'}}</span>
-          <span v-if="authority === 'admin'" @click="toAdmin">后台</span>
+          <span class="toAdmin" v-if="authority === 'admin'" @click="toAdmin">后台</span>
         </div>
     </header>
 </template>
@@ -69,5 +69,26 @@ export default {
           color: #f56f56;
       }
     }
+  }
+  @media (max-width: 700px) {
+    header {
+      width: calc(100% - 20px);
+      padding: 0 10px;
+      >p {
+        font-size: 18px;
+        font-weight: 600;
+        span {
+          font-size: 10px;
+        }
+      }
+      >div {
+        span,i {
+          font-size: 10px;
+        }
+        span.toAdmin {
+          display: none;
+        }
+      }
+    } 
   }
 </style>

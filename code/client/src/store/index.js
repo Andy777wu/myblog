@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
     state: {
-        role: ''
+        role: '',
+        username: ''
     },
     getters: {
 
@@ -13,6 +14,9 @@ const store = new Vuex.Store({
     mutations:{
         setRole(state,role){
             state.role = role
+        },
+        setUsername(state,username){
+            state.username = username
         }
     }
 })

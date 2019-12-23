@@ -5,9 +5,8 @@ const express = require('express')
 const app = express()
 
 // 中间件
-
-//使用body-parser中间件：一旦配置好body-parser中间之后，所有的req对象就会有一个属性对象body属性，他就是post请求的参数
-//补充说明：body-parser只能获取post请求的参数
+//使用body-parser中间件：配置好body-parser中间之后，所有的req对象就会有一个属性对象body属性，他就是post请求的参数
+//body-parser只能获取post请求的参数
 //(1)导入中间件
 const bodyParser = require('body-parser');
 //(2)使用中间件
@@ -20,13 +19,20 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 5
 app.use('/node_modules', express.static('node_modules'));
 
 // 路由容器
-app.use(require('./routers/articles._route.js'))
-app.use(require('./routers/seriers_route.js'))
-app.use(require('./routers/user_route.js'))
+const {
+  articles,
+  seriers,
+  user,
+  comment
+} = require('./routers/index.js')
+app.use(articles)
+app.use(seriers)
+app.use(user)
+app.use(comment)
 
 // 连接数据库
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1/blog',{useUnifiedTopology: true,useNewUrlParser: true })
+mongoose.connect('mongodb://127.0.0.1/blog',{useUnifiedTopology: true,useNewUrlParser: true,useCreateIndex: true})
 
 //使用cookie-session中间件实现保持用户登录状态
 //(1)导入中间件
@@ -41,5 +47,5 @@ app.use(cookieSession({
 
 // 启动服务器
 app.listen(3000,function(){
-    console.log('hello world');
+    console.log('服务器已启动！');
 })

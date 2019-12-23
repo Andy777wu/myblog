@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './store'
 import Router from 'vue-router'
+import moment from 'moment'
 // 引入样式
 import '../src/assets/css/base.css'
 import '../src/assets/iconfont/iconfont.css'
@@ -47,7 +48,10 @@ Vue.use(Dialog)
 Vue.use(Upload)
 Vue.use(Form)
 Vue.use(FormItem)
-
+// 时间格式化
+Vue.filter('stampToDate', function (date) {
+  return moment(date).format('YYYY-MM-DD hh:mm:ss')
+})
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox.confirm;
 
